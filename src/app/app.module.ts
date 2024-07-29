@@ -4,10 +4,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { ClarityModule } from '@clr/angular';
+import { IssueListComponent } from './issue-list/issue-list.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    IssueListComponent
   ],
   imports: [
     BrowserModule,
