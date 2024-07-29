@@ -1,13 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { IssuesService } from '../issues.service';
 import { Issue } from '../issue';
-
-@Component({
-  selector: 'app-issue-report',
-  templateUrl: './issue-report.component.html',
-  styleUrls: ['./issue-report.component.css']
-})
 
 interface IssueForm {
   title: FormControl<string>;
@@ -22,6 +16,8 @@ interface IssueForm {
   styleUrls: ['./issue-report.component.css']
 })
 export class IssueReportComponent {
+  @Output() formClose = new EventEmitter();
+
   issueForm = new FormGroup<IssueForm>({
     title: new FormControl('', { nonNullable: true }),
     description: new FormControl('', { nonNullable: true }),
@@ -33,5 +29,6 @@ export class IssueReportComponent {
 
   addIssue() {
     this.issueService.createIssue(this.issueForm.getRawValue() as Issue);
+    this.formClose.emit();
   }
 }
