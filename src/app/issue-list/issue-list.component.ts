@@ -10,7 +10,7 @@ import { Issue } from '../issue';
 export class IssueListComponent implements OnInit {
   issues: Issue[] = [];
 
-  showReportIssue = false;
+  showComponent: 'list' | 'new' | 'edit' | 'dialog' = 'list';
 
   selectedIssue: Issue | null = null;
 
@@ -25,7 +25,7 @@ export class IssueListComponent implements OnInit {
   }
 
   onCloseReport() {
-    this.showReportIssue = false;
+    this.showComponent = 'list';
     this.getIssues();
   }
 
